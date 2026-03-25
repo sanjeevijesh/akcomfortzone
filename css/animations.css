@@ -1,0 +1,43 @@
+/* =====================================================
+   AK COMFORTZONE — ANIMATIONS.CSS
+   ===================================================== */
+
+@keyframes clayFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-14px) rotate(2deg); }
+  66%       { transform: translateY(-7px) rotate(-1deg); }
+}
+
+@keyframes blobPulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50%       { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes windWave {
+  0%        { stroke-dashoffset: 100; opacity: 0; }
+  30%, 70%  { opacity: 0.6; }
+  100%      { stroke-dashoffset: 0; opacity: 0; }
+}
+
+.wind-1 { stroke-dasharray: 60; animation: windWave 2.4s ease-in-out infinite; }
+.wind-2 { stroke-dasharray: 80; animation: windWave 2.4s ease-in-out infinite 0.3s; }
+.wind-3 { stroke-dasharray: 100; animation: windWave 2.4s ease-in-out infinite 0.6s; }
+
+@keyframes navFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+#navbar { animation: navFadeIn 0.5s ease 0.2s both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

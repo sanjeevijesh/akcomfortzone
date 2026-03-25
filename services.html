@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="AK Comfortzone HVAC Services — Chiller Systems, VRF/VRV, Ductable AC, Split AC, Retrofit & Upgrades, AMC Maintenance. Complete turnkey HVAC for Tamil Nadu."/>
+  <meta name="robots" content="index, follow"/>
+  <title>Services — AK Comfortzone | Complete HVAC Turnkey Solutions</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png"/>
+  <link rel="stylesheet" href="css/clay.css"/>
+  <link rel="stylesheet" href="css/animations.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── Services page styles ── */
+    .services-hero {
+      min-height: 60vh;
+      display: flex; align-items: center;
+      padding: 140px 24px 80px;
+      position: relative; overflow: hidden;
+      background: linear-gradient(155deg, #dff0ff 0%, #f0fbf5 45%, #fff3e0 100%);
+    }
+    .services-hero-inner {
+      max-width: 1160px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+      position: relative; z-index: 2;
+    }
+    .services-hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem,4.5vw,3.8rem); font-weight: 900; color: var(--text-dark); line-height: 1.1; margin-bottom: 20px; }
+    .services-hero p  { font-size: 18px; color: var(--text-muted); line-height: 1.8; max-width: 480px; margin-bottom: 32px; }
+    .hero-blob-s1 { position:absolute; top:-60px; right:-60px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(168,216,255,0.45),transparent 70%); animation:blobPulse 8s ease-in-out infinite; pointer-events:none; }
+    .hero-blob-s2 { position:absolute; bottom:-80px; left:0; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle,rgba(255,217,142,0.35),transparent 70%); animation:blobPulse 10s ease-in-out infinite 2s; pointer-events:none; }
+    .hero-icon-cluster { display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; }
+    .hero-icon-box {
+      width: 90px; height: 90px; border-radius: 26px; display:flex; align-items:center; justify-content:center;
+      font-size:44px; box-shadow: var(--clay-shadow-md); animation: clayFloat 5s ease-in-out infinite;
+      position:relative; overflow:hidden;
+    }
+    .hero-icon-box::before { content:''; position:absolute; top:0; left:0; width:100%; height:45%; background:linear-gradient(to bottom,rgba(255,255,255,0.45),transparent); border-radius:26px 26px 0 0; }
+    .hero-icon-box:nth-child(1) { background:linear-gradient(145deg,#c8e8ff,var(--clay-sky)); animation-delay:0s; }
+    .hero-icon-box:nth-child(2) { background:linear-gradient(145deg,#c4f0de,var(--clay-mint)); animation-delay:0.6s; }
+    .hero-icon-box:nth-child(3) { background:linear-gradient(145deg,#ffe8d0,var(--clay-peach)); animation-delay:1.2s; }
+    .hero-icon-box:nth-child(4) { background:linear-gradient(145deg,#ddd4ff,var(--clay-lavender)); animation-delay:0.3s; }
+    .hero-icon-box:nth-child(5) { background:linear-gradient(145deg,#fff1c0,var(--clay-sunshine)); animation-delay:0.9s; }
+    .hero-icon-box:nth-child(6) { background:linear-gradient(145deg,#ffd0d0,var(--clay-coral)); animation-delay:1.5s; }
+
+    /* Service detail cards */
+    .service-detail-section { padding: 96px 24px; }
+    .service-detail-section:nth-child(even) { background: var(--bg-section-alt); }
+    .service-detail-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .service-detail-inner.reverse { direction: rtl; }
+    .service-detail-inner.reverse > * { direction: ltr; }
+    .service-detail-card {
+      border-radius: 40px; padding: 48px; position:relative; overflow:hidden;
+      box-shadow: var(--clay-shadow-lg); transition: transform 0.3s ease;
+    }
+    .service-detail-card:hover { transform: translateY(-6px) scale(1.01); }
+    .service-detail-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:38%; background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent); border-radius:40px 40px 0 0; pointer-events:none; }
+    .sdc-1 { background:linear-gradient(145deg,#c8e8ff,var(--clay-sky)); }
+    .sdc-2 { background:linear-gradient(145deg,#c4f0de,var(--clay-mint)); }
+    .sdc-3 { background:linear-gradient(145deg,#ffe8d0,var(--clay-peach)); }
+    .sdc-4 { background:linear-gradient(145deg,#ddd4ff,var(--clay-lavender)); }
+    .sdc-5 { background:linear-gradient(145deg,#fff1c0,var(--clay-sunshine)); }
+    .sdc-6 { background:linear-gradient(145deg,#ffd0d0,var(--clay-coral)); }
+    .service-detail-emoji { font-size: 80px; margin-bottom: 20px; display:block; filter:drop-shadow(4px 6px 8px rgba(0,0,0,0.15)); line-height:1; }
+    .service-detail-card h2 { font-family: var(--font-display); font-size: 30px; font-weight: 900; margin-bottom: 14px; color: var(--text-dark); }
+    .service-detail-card p  { font-size: 16px; color: rgba(26,43,60,0.82); line-height: 1.8; margin-bottom: 20px; }
+    .service-detail-sectors { display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 28px; }
+    .sector-tag {
+      padding: 5px 14px; border-radius:999px; font-size:12px; font-weight:700;
+      background:rgba(255,255,255,0.55); color:var(--text-dark);
+      box-shadow:3px 3px 8px rgba(0,80,160,0.12),-2px -2px 6px rgba(255,255,255,0.7);
+    }
+    .service-detail-text h2 { font-family: var(--font-display); font-size: 32px; font-weight: 900; margin-bottom: 16px; }
+    .service-detail-text p  { font-size: 16px; color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; }
+    .service-features { list-style: none; display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
+    .service-features li { display:flex; align-items:flex-start; gap:10px; font-size:15px; color:var(--text-dark); }
+    .service-features li::before { content:'✅'; font-size:16px; flex-shrink:0; }
+
+    /* Process steps */
+    .process-section { padding: 96px 24px; background: var(--bg-section-alt); }
+    .process-steps {
+      display: flex; gap: 0; margin-top: 56px; flex-wrap: wrap;
+      position: relative;
+    }
+    .process-step {
+      flex: 1; min-width: 180px; text-align: center; padding: 0 16px;
+      position: relative;
+    }
+    .process-step + .process-step::before {
+      content: '→';
+      position: absolute; left: -12px; top: 28px;
+      font-size: 22px; color: var(--clay-storm); opacity: 0.5;
+    }
+    .step-circle {
+      width: 64px; height: 64px; border-radius: 20px; margin: 0 auto 16px;
+      display:flex; align-items:center; justify-content:center;
+      font-family: var(--font-display); font-weight: 900; font-size: 22px; color: white;
+      box-shadow: var(--clay-shadow-md); position:relative; overflow:hidden;
+      transition: transform 0.2s ease;
+    }
+    .step-circle:hover { transform: scale(1.1) translateY(-4px); }
+    .step-circle::before { content:''; position:absolute; top:0; left:0; width:100%; height:45%; background:linear-gradient(to bottom,rgba(255,255,255,0.3),transparent); border-radius:20px 20px 0 0; }
+    .process-step:nth-child(1) .step-circle { background: linear-gradient(145deg, #6fbbf0, var(--clay-storm)); }
+    .process-step:nth-child(2) .step-circle { background: linear-gradient(145deg, #7fd4b0, #3aab80); }
+    .process-step:nth-child(3) .step-circle { background: linear-gradient(145deg, #f0b070, #d47820); }
+    .process-step:nth-child(4) .step-circle { background: linear-gradient(145deg, #a08fff, #7050e0); }
+    .process-step:nth-child(5) .step-circle { background: linear-gradient(145deg, #f07070, #d04040); }
+    .process-step h3 { font-family: var(--font-display); font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+    .process-step p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    @media (max-width:1024px) {
+      .services-hero-inner { grid-template-columns:1fr; text-align:center; }
+      .service-detail-inner { grid-template-columns:1fr; }
+      .service-detail-inner.reverse { direction:ltr; }
+    }
+    @media (max-width:767px) {
+      .services-hero { padding:120px 20px 60px; }
+      .service-detail-section { padding:64px 16px; }
+      .process-section { padding:64px 16px; }
+      .process-step + .process-step::before { display:none; }
+      .process-steps { gap:20px; }
+    }
+  </style>
+</head>
+<body style="overflow-x:hidden;">
+
+<div id="drawerOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);z-index:998;"></div>
+<div id="mobileDrawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="drawer-handle"></div>
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="about.html">👥 About Us</a>
+    <a href="services.html">⚙️ Services</a>
+    <a href="clients.html">🏢 Clients</a>
+    <a href="portfolio.html">📁 Portfolio</a>
+    <a href="contact.html">📞 Contact</a>
+  </nav>
+  <a href="contact.html" class="clay-btn clay-btn-lg" style="margin-top:20px;width:100%;justify-content:center;">❄️ Get Free Consultation</a>
+</div>
+
+<header role="banner">
+  <nav id="navbar" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark" aria-hidden="true">AK</div>
+      <div class="nav-logo-text">
+        <strong>AK Comfortzone</strong>
+        <span>HVAC Turnkey Specialists</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="clients.html">Clients</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="contact.html" class="clay-btn" id="nav-quote-btn">Get Quote ✨</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="services-hero" aria-labelledby="services-hero-heading">
+  <div class="hero-blob-s1" aria-hidden="true"></div>
+  <div class="hero-blob-s2" aria-hidden="true"></div>
+  <div class="services-hero-inner">
+    <div>
+      <span class="section-label" style="margin-bottom:20px;">What We Offer</span>
+      <h1 id="services-hero-heading">Complete HVAC <span style="background:linear-gradient(135deg,var(--clay-storm),#3a90d0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Solutions</span></h1>
+      <p>From initial consultation and engineering design to full installation, commissioning, and AMC — we handle every aspect of your HVAC project end-to-end.</p>
+      <a href="contact.html" class="clay-btn clay-btn-lg" id="services-hero-cta">❄️ Get Free Consultation</a>
+    </div>
+    <div class="hero-icon-cluster" aria-hidden="true">
+      <div class="hero-icon-box">🌡️</div>
+      <div class="hero-icon-box">🌬️</div>
+      <div class="hero-icon-box">💨</div>
+      <div class="hero-icon-box">❄️</div>
+      <div class="hero-icon-box">🔧</div>
+      <div class="hero-icon-box">🛡️</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 1: CHILLERS -->
+<section class="service-detail-section" id="chillers" aria-labelledby="chiller-heading">
+  <div class="service-detail-inner">
+    <div class="service-detail-card sdc-1 reveal">
+      <span class="service-detail-emoji" aria-hidden="true">🌡️</span>
+      <h2>Chiller Systems</h2>
+      <p>Industrial-grade cooling for large commercial spaces and process applications — air-cooled, water-cooled, screw and centrifugal chiller solutions.</p>
+      <div class="service-detail-sectors">
+        <span class="sector-tag">Data Centers</span>
+        <span class="sector-tag">Pharma</span>
+        <span class="sector-tag">Hospitals</span>
+        <span class="sector-tag">Industrial</span>
+        <span class="sector-tag">Malls</span>
+        <span class="sector-tag">Hotels</span>
+      </div>
+      <a href="contact.html" class="clay-btn" id="chiller-cta">Get a Quote →</a>
+    </div>
+    <div class="service-detail-text reveal reveal-delay-1">
+      <h2 id="chiller-heading">Precision Process Cooling</h2>
+      <p>Chiller systems are the backbone of large-scale cooling infrastructure. Our engineers, trained at Blue Star Ltd, bring deep expertise in selecting, sizing, installing and maintaining chiller plants for maximum efficiency and reliability.</p>
+      <ul class="service-features">
+        <li>Air-cooled and Water-cooled Chiller Plants</li>
+        <li>Screw Chillers and Centrifugal Chillers</li>
+        <li>Process Cooling for Pharma &amp; Industrial</li>
+        <li>Data Centre Precision Cooling</li>
+        <li>Energy Efficiency Optimization</li>
+        <li>24/7 AMC Support Available</li>
+      </ul>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="contact.html" class="clay-btn" id="chiller-consult-btn">Free Consultation</a>
+        <a href="portfolio.html#chillers" class="clay-btn clay-btn-outline" id="chiller-portfolio-btn">View Projects →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 2: VRF -->
+<section class="service-detail-section" id="vrf" aria-labelledby="vrf-heading">
+  <div class="service-detail-inner reverse">
+    <div class="service-detail-card sdc-2 reveal">
+      <span class="service-detail-emoji" aria-hidden="true">🌬️</span>
+      <h2>VRF / VRV Systems</h2>
+      <p>Variable Refrigerant Flow systems for multi-zone smart cooling — flexible piping, inverter compressors, superior energy efficiency.</p>
+      <div class="service-detail-sectors">
+        <span class="sector-tag">Offices</span>
+        <span class="sector-tag">Hotels</span>
+        <span class="sector-tag">IT Companies</span>
+        <span class="sector-tag">Malls</span>
+        <span class="sector-tag">Builders</span>
+      </div>
+      <a href="contact.html" class="clay-btn" id="vrf-cta">Get a Quote →</a>
+    </div>
+    <div class="service-detail-text reveal reveal-delay-1">
+      <h2 id="vrf-heading">Multi-Zone Smart Cooling</h2>
+      <p>VRF/VRV systems are the modern standard for large buildings requiring multi-zone cooling with independent temperature control. Our team has installed VRF systems across 150+ projects including offices, hotels, and IT campuses.</p>
+      <ul class="service-features">
+        <li>Multi-zone independent temperature control</li>
+        <li>Inverter compressor technology — 30–40% energy saving</li>
+        <li>Flexible refrigerant piping up to 165m</li>
+        <li>Heat recovery VRF systems for simultaneous heating &amp; cooling</li>
+        <li>BMS/Building Management System integration</li>
+        <li>All leading brands: Daikin, Mitsubishi, LG, Samsung, Blue Star</li>
+      </ul>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="contact.html" class="clay-btn" id="vrf-consult-btn">Free Consultation</a>
+        <a href="portfolio.html#vrf" class="clay-btn clay-btn-outline" id="vrf-portfolio-btn">View Projects →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 3: DUCTABLE -->
+<section class="service-detail-section" id="ductable" aria-labelledby="ductable-heading">
+  <div class="service-detail-inner">
+    <div class="service-detail-card sdc-3 reveal">
+      <span class="service-detail-emoji" aria-hidden="true">💨</span>
+      <h2>Ductable / Packaged AC</h2>
+      <p>Central ducted air conditioning for large open spaces — designed for uniform cooling across malls, cinemas, marriage halls, and commercial complexes.</p>
+      <div class="service-detail-sectors">
+        <span class="sector-tag">Cinemas</span>
+        <span class="sector-tag">Marriage Halls</span>
+        <span class="sector-tag">Malls</span>
+        <span class="sector-tag">Hospitals</span>
+        <span class="sector-tag">Educational</span>
+      </div>
+      <a href="contact.html" class="clay-btn" id="ductable-cta">Get a Quote →</a>
+    </div>
+    <div class="service-detail-text reveal reveal-delay-1">
+      <h2 id="ductable-heading">Central Cooling for Large Spaces</h2>
+      <p>Ductable packaged AC systems offer the most efficient and comfortable cooling solution for large single or multi-room commercial spaces. We design and install complete ducted systems from air handling units to grilles and VAV boxes.</p>
+      <ul class="service-features">
+        <li>Ducted split and packaged AC units (3TR to 25TR)</li>
+        <li>Complete ductwork design — GI sheet, PU duct</li>
+        <li>Fresh air handling and ventilation systems</li>
+        <li>Ceiling concealed and floor-standing units</li>
+        <li>Air-cooled and water-cooled packaged units</li>
+        <li>Commissioning, balancing and handover</li>
+      </ul>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="contact.html" class="clay-btn" id="ductable-consult-btn">Free Consultation</a>
+        <a href="portfolio.html#ductable" class="clay-btn clay-btn-outline" id="ductable-portfolio-btn">View Projects →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 4: SPLIT AC -->
+<section class="service-detail-section" id="split" aria-labelledby="split-heading">
+  <div class="service-detail-inner reverse">
+    <div class="service-detail-card sdc-4 reveal">
+      <span class="service-detail-emoji" aria-hidden="true">❄️</span>
+      <h2>Split AC Systems</h2>
+      <p>Expert installation, repair and servicing for all types of split AC systems — for commercial establishments, offices, showrooms, and hospitality.</p>
+      <div class="service-detail-sectors">
+        <span class="sector-tag">Offices</span>
+        <span class="sector-tag">Showrooms</span>
+        <span class="sector-tag">Restaurants</span>
+        <span class="sector-tag">Banks</span>
+        <span class="sector-tag">Hotels</span>
+      </div>
+      <a href="contact.html" class="clay-btn" id="split-cta">Get a Quote →</a>
+    </div>
+    <div class="service-detail-text reveal reveal-delay-1">
+      <h2 id="split-heading">Reliable Split Unit Expertise</h2>
+      <p>From single wall-mounted splits to multi-head cassette units, our experienced technicians handle everything — new installations, service, repairs, and gas charging for all major HVAC brands.</p>
+      <ul class="service-features">
+        <li>Wall-mounted, Cassette, and Floor-standing splits</li>
+        <li>All major brands — Blue Star, Daikin, Voltas, LG, Samsung, Hitachi</li>
+        <li>Multi-split systems for offices and retail</li>
+        <li>Inverter and non-inverter systems</li>
+        <li>Gas leak detection and re-charging</li>
+        <li>Preventive maintenance and annual contracts</li>
+      </ul>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="contact.html" class="clay-btn" id="split-consult-btn">Free Consultation</a>
+        <a href="portfolio.html#split" class="clay-btn clay-btn-outline" id="split-portfolio-btn">View Projects →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 5: RETROFIT -->
+<section class="service-detail-section" id="retrofit" aria-labelledby="retrofit-heading">
+  <div class="service-detail-inner">
+    <div class="service-detail-card sdc-5 reveal">
+      <span class="service-detail-emoji" aria-hidden="true">🔧</span>
+      <h2>Retrofit &amp; Upgrades</h2>
+      <p>Modernise your existing HVAC infrastructure without full replacement — improve energy efficiency, system reliability and comfort at a fraction of the cost.</p>
+      <div class="service-detail-sectors">
+        <span class="sector-tag">Industrial</span>
+        <span class="sector-tag">Hospitals</span>
+        <span class="sector-tag">IT Offices</span>
+        <span class="sector-tag">Pharma</span>
+        <span class="sector-tag">Malls</span>
+      </div>
+      <a href="contact.html" class="clay-btn" id="retrofit-cta">Get a Quote →</a>
+    </div>
+    <div class="service-detail-text reveal reveal-delay-1">
+      <h2 id="retrofit-heading">Modernise &amp; Optimise</h2>
+      <p>Older HVAC systems can consume up to 40% more energy than modern equivalents. Our retrofit services breathe new life into aging infrastructure — improving comfort, reliability, and operational cost savings.</p>
+      <ul class="service-features">
+        <li>Energy auditing and efficiency assessment</li>
+        <li>Chiller replacement and capacity enhancement</li>
+        <li>VRF system conversion from old split networks</li>
+        <li>Controls upgrade — BMS / Smart controllers</li>
+        <li>Duct rehabilitation and sealing</li>
+        <li>R22 to R410A refrigerant conversion</li>
+      </ul>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="contact.html" class="clay-btn" id="retrofit-consult-btn">Free Site Survey</a>
+        <a href="portfolio.html#retrofit" class="clay-btn clay-btn-outline" id="retrofit-portfolio-btn">View Projects →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 6: AMC -->
+<section class="service-detail-section" id="amc" aria-labelledby="amc-heading">
+  <div class="service-detail-inner reverse">
+    <div class="service-detail-card sdc-6 reveal">
+      <span class="service-detail-emoji" aria-hidden="true">🛡️</span>
+      <h2>AMC / Maintenance</h2>
+      <p>Annual maintenance contracts with structured preventive care schedules and emergency response — protecting your HVAC investment year-round.</p>
+      <div class="service-detail-sectors">
+        <span class="sector-tag">All Sectors</span>
+        <span class="sector-tag">Hospitals</span>
+        <span class="sector-tag">Data Centers</span>
+        <span class="sector-tag">Pharma</span>
+        <span class="sector-tag">Industrial</span>
+      </div>
+      <a href="contact.html" class="clay-btn" id="amc-cta">Get a Quote →</a>
+    </div>
+    <div class="service-detail-text reveal reveal-delay-1">
+      <h2 id="amc-heading">Peace of Mind, Year-Round</h2>
+      <p>A well-maintained HVAC system runs 25% more efficiently and lasts significantly longer. Our AMC plans are structured to give business owners complete peace of mind — with scheduled visits, priority response, and full documentation.</p>
+      <ul class="service-features">
+        <li>Quarterly and monthly preventive maintenance visits</li>
+        <li>Priority emergency response (same-day / next-day)</li>
+        <li>Filter cleaning, coil cleaning, drain line flushing</li>
+        <li>Performance testing and reporting</li>
+        <li>Spare parts management</li>
+        <li>Chiller, VRF, Ductable &amp; Split AC contracts available</li>
+      </ul>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="contact.html" class="clay-btn" id="amc-consult-btn">Get AMC Quote</a>
+        <a href="portfolio.html#amc" class="clay-btn clay-btn-outline" id="amc-portfolio-btn">View Projects →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS STEPS -->
+<section class="process-section" aria-labelledby="process-heading">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label">How We Work</span>
+      <h2 class="section-heading" id="process-heading">Our Turnkey Process</h2>
+      <p class="section-sub">From first contact to final handover — five structured steps that guarantee a smooth, successful HVAC project.</p>
+    </div>
+    <div class="process-steps" role="list" aria-label="Our 5-step project process">
+      <div class="process-step reveal" role="listitem">
+        <div class="step-circle" aria-label="Step 1">1</div>
+        <h3>Consultation &amp; Site Survey</h3>
+        <p>Free site visit, load calculation, and requirement analysis with our engineers.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1" role="listitem">
+        <div class="step-circle" aria-label="Step 2">2</div>
+        <h3>Design &amp; Engineering</h3>
+        <p>System design, equipment selection, layout drawings, and detailed cost proposal.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2" role="listitem">
+        <div class="step-circle" aria-label="Step 3">3</div>
+        <h3>Material Procurement</h3>
+        <p>Quality equipment sourcing from authorised suppliers and OEM partners.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3" role="listitem">
+        <div class="step-circle" aria-label="Step 4">4</div>
+        <h3>Installation &amp; Commissioning</h3>
+        <p>Professional installation by certified engineers, full testing and commissioning.</p>
+      </div>
+      <div class="process-step reveal" aria-label="Step 5" role="listitem">
+        <div class="step-circle">5</div>
+        <h3>Handover &amp; AMC</h3>
+        <p>Complete documentation, staff training, and annual maintenance contract option.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-banner" aria-label="Get HVAC quote">
+  <div class="blob-1" aria-hidden="true"></div>
+  <div class="blob-2" aria-hidden="true"></div>
+  <div class="inner">
+    <div class="clay-badge" style="background:linear-gradient(135deg,rgba(168,216,255,0.15),rgba(91,155,213,0.15));color:var(--clay-sky);border:1px solid rgba(91,155,213,0.3);">🔥 Free Consultation — No Obligation</div>
+    <h2>Ready to Start Your HVAC Project?</h2>
+    <p>Talk to our engineers today. We'll assess your requirements and propose the right system — on budget, on time.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="clay-btn clay-btn-lg" id="services-footer-cta">❄️ Get Free Consultation</a>
+      <a href="portfolio.html" class="clay-btn clay-btn-lg clay-btn-dark-outline" id="services-footer-portfolio">View Our Projects →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo-mark" style="width:48px;height:48px;font-size:18px;border-radius:14px;margin-bottom:14px;" aria-hidden="true">AK</div>
+        <div class="footer-brand-name">AK Comfortzone</div>
+        <p class="footer-tagline">Your Comfort, Our Priority.<br>Professional &amp; Dynamic Turnkey HVAC Solutions across Tamil Nadu — since November 2014.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="Facebook">📘</a>
+          <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+          <a href="#" class="social-btn" aria-label="LinkedIn">💼</a>
+          <a href="#" class="social-btn" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="clients.html">Clients</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#chillers">Chiller Systems</a></li>
+          <li><a href="#vrf">VRF / VRV Systems</a></li>
+          <li><a href="#ductable">Ductable AC</a></li>
+          <li><a href="#split">Split AC</a></li>
+          <li><a href="#retrofit">Retrofit &amp; Upgrades</a></li>
+          <li><a href="#amc">AMC Maintenance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-contact-item">
+          <span class="contact-icon" aria-hidden="true">📍</span>
+          <p><strong>Thoothukudi</strong>2H/740, Annai Theresa Nagar, Kandan Colony, TN 628008</p>
+        </div>
+        <div class="footer-contact-item">
+          <span class="contact-icon" aria-hidden="true">📍</span>
+          <p><strong>Tiruchirappalli</strong>No.28, 6th Sector, Morais City, Sembattu, TN 620007</p>
+        </div>
+        <div class="footer-contact-item">
+          <span class="contact-icon" aria-hidden="true">🕐</span>
+          <p>Mon–Sat, 9AM–6PM IST</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 AK Comfortzone. All rights reserved. | akcomfortzone.in</p>
+      <p class="footer-love">Designed with <span>❄️</span> in Tamil Nadu</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+<script src="js/counter.js" defer></script>
+</body>
+</html>

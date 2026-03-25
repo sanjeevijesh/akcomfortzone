@@ -1,0 +1,195 @@
+/* =====================================================
+   AK COMFORTZONE — CLAY.CSS
+   Claymorphism Design System
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* ── CSS Variables ─────────────────────────────────── */
+:root {
+  /* Brand Colors */
+  --clay-sky:        #A8D8FF;
+  --clay-ice:        #D6F0FF;
+  --clay-mint:       #B5EAD7;
+  --clay-snow:       #FFFFFF;
+  --clay-storm:      #5B9BD5;
+  --clay-frost:      #EBF5FF;
+  --clay-deep:       #3A78B5;
+
+  /* Accent Colors */
+  --clay-sunshine:   #FFD98E;
+  --clay-coral:      #FFADAD;
+  --clay-lavender:   #C9B8FF;
+  --clay-peach:      #FFDAC1;
+
+  /* Text */
+  --text-dark:       #1A2B3C;
+  --text-muted:      #5A7080;
+  --text-light:      #FFFFFF;
+
+  /* Background */
+  --bg-page:         #EBF5FF;
+  --bg-section-alt:  #F0F8FF;
+
+  /* Shadows */
+  --clay-shadow-sm:
+    6px 6px 12px rgba(0,80,160,0.15),
+    -3px -3px 8px rgba(255,255,255,0.8),
+    inset 0 1px 3px rgba(255,255,255,0.9);
+
+  --clay-shadow-md:
+    10px 10px 24px rgba(0,80,160,0.18),
+    -5px -5px 14px rgba(255,255,255,0.85),
+    inset 0 2px 5px rgba(255,255,255,0.9);
+
+  --clay-shadow-lg:
+    16px 16px 40px rgba(0,80,160,0.2),
+    -8px -8px 20px rgba(255,255,255,0.9),
+    inset 0 3px 6px rgba(255,255,255,0.95);
+
+  /* Radius */
+  --r-pill:    999px;
+  --r-card:    32px;
+  --r-section: 48px;
+  --r-btn:     20px;
+  --r-input:   18px;
+
+  /* Fonts */
+  --font-display: 'Nunito', sans-serif;
+  --font-body:    'Plus Jakarta Sans', sans-serif;
+}
+
+/* ── Reset ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-page);
+  color: var(--text-dark);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+/* ── Clay Button ───────────────────────────────────── */
+.clay-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--r-btn);
+  border: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  background: linear-gradient(145deg, #6FAEDD, var(--clay-storm));
+  color: var(--text-light);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow:
+    6px 6px 0px rgba(0,80,160,0.3),
+    inset 0 2px 4px rgba(255,255,255,0.3);
+  white-space: nowrap;
+}
+.clay-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    8px 10px 0px rgba(0,80,160,0.3),
+    inset 0 2px 4px rgba(255,255,255,0.3);
+}
+.clay-btn:active {
+  transform: translateY(2px) scale(0.97);
+  box-shadow:
+    2px 2px 0px rgba(0,80,160,0.3),
+    inset 0 2px 4px rgba(255,255,255,0.3);
+}
+.clay-btn-lg {
+  padding: 16px 36px;
+  font-size: 16px;
+}
+.clay-btn-outline {
+  background: linear-gradient(145deg, #ffffff, #e8f4ff);
+  color: var(--clay-storm);
+  box-shadow:
+    6px 6px 0px rgba(0,80,160,0.2),
+    inset 0 2px 4px rgba(255,255,255,0.9);
+  border: 2px solid rgba(91,155,213,0.3);
+}
+.clay-btn-outline:hover {
+  background: linear-gradient(145deg, #f0f9ff, #d6efff);
+}
+
+/* ── Clay Card ─────────────────────────────────────── */
+.clay-card {
+  background: linear-gradient(145deg, #ffffff, #e8f4ff);
+  border-radius: var(--r-card);
+  padding: 32px;
+  box-shadow: var(--clay-shadow-md);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.clay-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--clay-shadow-lg);
+}
+
+/* ── Clay Badge ────────────────────────────────────── */
+.clay-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 18px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  background: linear-gradient(135deg, var(--clay-ice), var(--clay-sky));
+  color: var(--clay-deep);
+  box-shadow: var(--clay-shadow-sm);
+}
+
+/* ── Clay Chip ─────────────────────────────────────── */
+.clay-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  font-size: 14px;
+  background: linear-gradient(145deg, #ffffff, #e8f4ff);
+  color: var(--text-dark);
+  box-shadow: var(--clay-shadow-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.clay-chip:hover { transform: translateY(-2px); }
+
+/* ── Clay Input ────────────────────────────────────── */
+.clay-input, .clay-textarea, .clay-select {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: var(--r-input);
+  border: 2px solid transparent;
+  background: linear-gradient(145deg, #f0f7ff, #ffffff);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-dark);
+  box-shadow:
+    inset 4px 4px 10px rgba(0,80,160,0.1),
+    inset -3px -3px 8px rgba(255,255,255,0.8);
+  transition: all 0.2s ease;
+  outline: none;
+}
+.clay-input:focus, .clay-textarea:focus, .clay-select:focus {
+  border-color: var(--clay-storm);
+  box-shadow:
+    inset 4px 4px 10px rgba(0,80,160,0.12),
+    inset -3px -3px 8px rgba(255,255,255,0.8),
+    0 0 0 3px rgba(91,155,213,0.2);
+  transform: scale(1.01);
+}
+.clay-textarea { resize: vertical; min-height: 130px; }

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Contact AK Comfortzone — Get a free HVAC consultation. Two offices in Thoothukudi and Tiruchirappalli, Tamil Nadu. Call, WhatsApp, or fill the enquiry form."/>
+  <meta name="robots" content="index, follow"/>
+  <title>Contact — AK Comfortzone | Get a Free HVAC Consultation</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png"/>
+  <link rel="stylesheet" href="css/clay.css"/>
+  <link rel="stylesheet" href="css/animations.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── Contact page styles ── */
+    .contact-hero {
+      min-height: 50vh; display:flex; align-items:center;
+      padding: 140px 24px 64px;
+      position: relative; overflow: hidden;
+      background: linear-gradient(155deg, #fff3e0 0%, #dff0ff 50%, #e8fdf6 100%);
+    }
+    .contact-hero-inner { max-width: 700px; margin:0 auto; width:100%; text-align:center; position:relative; z-index:2; }
+    .contact-hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem,4.5vw,3.8rem); font-weight: 900; color: var(--text-dark); line-height: 1.1; margin-bottom: 20px; }
+    .contact-hero p { font-size: 18px; color: var(--text-muted); line-height: 1.8; max-width: 500px; margin: 0 auto 32px; }
+    .contact-quick-links { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+    .cq-blob-1 { position:absolute; top:-60px; right:-60px; width:350px; height:350px; border-radius:50%; background:radial-gradient(circle,rgba(255,217,142,0.45),transparent 70%); animation:blobPulse 8s ease-in-out infinite; pointer-events:none; }
+    .cq-blob-2 { position:absolute; bottom:-60px; left:-40px; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle,rgba(168,216,255,0.4),transparent 70%); animation:blobPulse 10s ease-in-out infinite 2s; pointer-events:none; }
+
+    /* Contact main section */
+    .contact-main { padding: 96px 24px; }
+    .contact-grid {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; align-items: start;
+    }
+
+    /* Info column */
+    .contact-info-col { display: flex; flex-direction: column; gap: 20px; }
+    .contact-info-card {
+      border-radius: 32px; padding: 32px;
+      box-shadow: var(--clay-shadow-md); position: relative; overflow: hidden;
+      transition: transform 0.25s ease;
+    }
+    .contact-info-card:hover { transform: translateY(-4px); }
+    .contact-info-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:38%; background:linear-gradient(to bottom,rgba(255,255,255,0.45),transparent); border-radius:32px 32px 0 0; pointer-events:none; }
+    .cic-1 { background: linear-gradient(145deg, #c8e8ff, var(--clay-sky)); }
+    .cic-2 { background: linear-gradient(145deg, #c4f0de, var(--clay-mint)); }
+    .cic-3 { background: linear-gradient(145deg, #ddd4ff, var(--clay-lavender)); }
+    .cic-4 { background: linear-gradient(145deg, #fff1c0, var(--clay-sunshine)); }
+    .cic-icon { font-size: 32px; margin-bottom: 12px; display: block; }
+    .contact-info-card h3 { font-family: var(--font-display); font-size: 18px; font-weight: 800; margin-bottom: 10px; }
+    .contact-info-card p  { font-size: 14px; color: rgba(26,43,60,0.8); line-height: 1.7; }
+    .contact-info-card a  { color: var(--clay-deep); font-weight: 700; display: block; margin-top: 4px; transition: opacity 0.2s; }
+    .contact-info-card a:hover { opacity: 0.75; }
+
+    /* Form card */
+    .contact-form-card {
+      border-radius: 40px;
+      background: linear-gradient(145deg, #ffffff, #eef7ff);
+      box-shadow: var(--clay-shadow-lg);
+      padding: 48px;
+      position: relative; overflow: hidden;
+    }
+    .contact-form-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:32%; background:linear-gradient(to bottom,rgba(255,255,255,0.5),transparent); border-radius:40px 40px 0 0; pointer-events:none; }
+    .contact-form-card h2 { font-family: var(--font-display); font-size: 26px; font-weight: 900; margin-bottom: 8px; }
+    .contact-form-card p  { font-size: 14px; color: var(--text-muted); margin-bottom: 32px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label { font-size: 13px; font-weight: 700; color: var(--text-dark); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 13px 16px; border-radius: 16px; border: 2px solid rgba(168,216,255,0.5);
+      background: linear-gradient(145deg, #fff, #f0f8ff);
+      font-family: var(--font-body); font-size: 14px; color: var(--text-dark);
+      box-shadow: inset 2px 2px 6px rgba(168,216,255,0.2), inset -2px -2px 6px rgba(255,255,255,0.8);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none; width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--clay-storm);
+      box-shadow: inset 2px 2px 6px rgba(91,155,213,0.2), inset -2px -2px 6px rgba(255,255,255,0.8), 0 0 0 3px rgba(91,155,213,0.15);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235B9BD5' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+    .form-submit { width: 100%; margin-top: 8px; justify-content: center; }
+    .form-note { text-align:center; font-size:12px; color:var(--text-muted); margin-top:12px; }
+    .form-success {
+      display: none; text-align:center; padding:32px;
+      background:linear-gradient(145deg,#c4f0de,var(--clay-mint));
+      border-radius:24px; margin-top:16px;
+      box-shadow: var(--clay-shadow-sm);
+    }
+    .form-success.show { display: block; }
+    .form-success h3 { font-family:var(--font-display); font-size:22px; font-weight:900; margin-bottom:8px; }
+    .form-success p  { font-size:15px; color:rgba(26,43,60,0.8); }
+
+    /* Locations section on contact page */
+    .contact-locations { padding: 0 24px 96px; }
+    .contact-loc-grid {
+      max-width: 1160px; margin:0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    .contact-loc-card {
+      border-radius: 32px; padding: 36px;
+      box-shadow: var(--clay-shadow-md); position:relative; overflow:hidden;
+      transition: transform 0.25s ease; text-align:center;
+    }
+    .contact-loc-card:hover { transform: translateY(-6px); }
+    .contact-loc-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:38%; background:linear-gradient(to bottom,rgba(255,255,255,0.45),transparent); border-radius:32px 32px 0 0; pointer-events:none; }
+    .contact-loc-card:nth-child(1) { background: linear-gradient(145deg, #d6f0ff, var(--clay-ice)); }
+    .contact-loc-card:nth-child(2) { background: linear-gradient(145deg, #c4f0de, var(--clay-mint)); }
+    .contact-loc-card h3 { font-family: var(--font-display); font-size: 22px; font-weight: 800; margin-bottom: 14px; }
+    .contact-loc-card p  { font-size: 14px; color: rgba(26,43,60,0.8); line-height: 1.8; margin-bottom: 8px; }
+    .hours-tag { display: inline-block; padding: 5px 16px; border-radius:999px; font-size:12px; font-weight:700; background:rgba(255,255,255,0.6); color:var(--clay-deep); margin-bottom:20px; box-shadow:var(--clay-shadow-sm); }
+    .loc-icon-big { font-size: 48px; display:block; margin-bottom:14px; }
+
+    @media (max-width:1024px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-loc-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width:767px) {
+      .contact-hero { padding:120px 20px 56px; }
+      .contact-main { padding: 64px 16px; }
+      .contact-locations { padding: 0 16px 64px; }
+      .contact-form-card { padding: 28px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body style="overflow-x:hidden;">
+
+<div id="drawerOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);z-index:998;"></div>
+<div id="mobileDrawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="drawer-handle"></div>
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="about.html">👥 About Us</a>
+    <a href="services.html">⚙️ Services</a>
+    <a href="clients.html">🏢 Clients</a>
+    <a href="portfolio.html">📁 Portfolio</a>
+    <a href="contact.html">📞 Contact</a>
+  </nav>
+  <a href="contact.html" class="clay-btn clay-btn-lg" style="margin-top:20px;width:100%;justify-content:center;">❄️ Get Free Consultation</a>
+</div>
+
+<header role="banner">
+  <nav id="navbar" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark" aria-hidden="true">AK</div>
+      <div class="nav-logo-text"><strong>AK Comfortzone</strong><span>HVAC Turnkey Specialists</span></div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="clients.html">Clients</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="contact.html" class="clay-btn" id="nav-quote-btn">Get Quote ✨</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="contact-hero" aria-labelledby="contact-hero-heading">
+  <div class="cq-blob-1" aria-hidden="true"></div>
+  <div class="cq-blob-2" aria-hidden="true"></div>
+  <div class="contact-hero-inner">
+    <span class="section-label">Get in Touch</span>
+    <h1 id="contact-hero-heading">Let's Cool Your Space</h1>
+    <p>From a quick enquiry to a full site survey — our engineers are ready to help. No obligation, free consultation.</p>
+    <div class="contact-quick-links">
+      <a href="tel:+919876543210" class="clay-btn clay-btn-lg" id="contact-call-btn">📞 Call Us</a>
+      <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="clay-btn clay-btn-outline clay-btn-lg" id="contact-whatsapp-btn">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTACT SECTION -->
+<section class="contact-main" aria-labelledby="contact-form-heading">
+  <div class="contact-grid">
+
+    <!-- Left: info cards -->
+    <div class="contact-info-col">
+      <div class="contact-info-card cic-1 reveal">
+        <span class="cic-icon" aria-hidden="true">📍</span>
+        <h3>Thoothukudi Office</h3>
+        <p>
+          2H/740, Annai Theresa Nagar,<br>
+          Kandan Colony, Teachers Colony,<br>
+          Thoothukudi, Tamil Nadu — 628008
+        </p>
+        <a href="https://maps.google.com/?q=Thoothukudi+Tamil+Nadu+628008" target="_blank" rel="noopener">📍 Open in Google Maps</a>
+      </div>
+
+      <div class="contact-info-card cic-2 reveal reveal-delay-1">
+        <span class="cic-icon" aria-hidden="true">📍</span>
+        <h3>Tiruchirappalli Office</h3>
+        <p>
+          No. 28, 6th Sector, Morais City,<br>
+          Sembattu, Tiruchirappalli,<br>
+          Tamil Nadu — 620007
+        </p>
+        <a href="https://maps.google.com/?q=Sembattu+Tiruchirappalli+Tamil+Nadu+620007" target="_blank" rel="noopener">📍 Open in Google Maps</a>
+      </div>
+
+      <div class="contact-info-card cic-3 reveal reveal-delay-2">
+        <span class="cic-icon" aria-hidden="true">📞</span>
+        <h3>Call or WhatsApp</h3>
+        <p>Our team is available Monday to Saturday, 9AM–6PM IST for enquiries, site visits, and AMC support.</p>
+        <a href="tel:+919876543210">+91 98765 43210</a>
+        <a href="https://wa.me/919876543210" target="_blank" rel="noopener">💬 Chat on WhatsApp</a>
+      </div>
+
+      <div class="contact-info-card cic-4 reveal reveal-delay-3">
+        <span class="cic-icon" aria-hidden="true">✉️</span>
+        <h3>Email Us</h3>
+        <p>For project enquiries, AMC quotations, and technical specifications — reach our team via email.</p>
+        <a href="mailto:info@akcomfortzone.in">info@akcomfortzone.in</a>
+        <a href="mailto:projects@akcomfortzone.in">projects@akcomfortzone.in</a>
+      </div>
+    </div>
+
+    <!-- Right: enquiry form -->
+    <div class="contact-form-card reveal reveal-delay-1">
+      <h2 id="contact-form-heading">Send an Enquiry</h2>
+      <p>Fill in the form and our team will respond within 1–2 business hours.</p>
+
+      <form id="contactForm" novalidate aria-label="HVAC enquiry form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" placeholder="Eg. Rajesh Kumar" required autocomplete="name"/>
+          </div>
+          <div class="form-group">
+            <label for="company">Company / Organisation</label>
+            <input type="text" id="company" name="company" placeholder="Eg. ABC Hotels Pvt Ltd" autocomplete="organization"/>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone / WhatsApp *</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required autocomplete="tel"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email"/>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="service">Service Required *</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option value="chiller">🌡️ Chiller System</option>
+              <option value="vrf">🌬️ VRF / VRV System</option>
+              <option value="ductable">💨 Ductable / Packaged AC</option>
+              <option value="split">❄️ Split AC</option>
+              <option value="retrofit">🔧 Retrofit &amp; Upgrade</option>
+              <option value="amc">🛡️ AMC / Maintenance</option>
+              <option value="other">Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="location">Project Location *</label>
+            <select id="location" name="location" required>
+              <option value="" disabled selected>Select district</option>
+              <option>Thoothukudi</option>
+              <option>Tiruchirappalli</option>
+              <option>Chennai</option>
+              <option>Coimbatore</option>
+              <option>Madurai</option>
+              <option>Tirunelveli</option>
+              <option>Salem</option>
+              <option>Vellore</option>
+              <option>Other Tamil Nadu</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="sector">Industry / Sector</label>
+          <select id="sector" name="sector">
+            <option value="" disabled selected>Select your sector</option>
+            <option>🏦 Bank / Finance</option>
+            <option>🏥 Hospital / Clinic</option>
+            <option>🏨 Hotel / Hospitality</option>
+            <option>💊 Pharma / Healthcare</option>
+            <option>🖥️ IT / Software Company</option>
+            <option>🏪 Mall / Retail</option>
+            <option>🎬 Cinema / Multiplex</option>
+            <option>🎓 Educational Institute</option>
+            <option>💒 Marriage Hall / Events</option>
+            <option>🏭 Industrial / Factory</option>
+            <option>🖧 Data Center</option>
+            <option>🏗️ Builders / Real Estate</option>
+            <option>🍽️ Restaurant / F&amp;B</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Project Details / Message *</label>
+          <textarea id="message" name="message" placeholder="Briefly describe your HVAC requirement — area to be cooled, current system (if any), timeline, and budget range..." required></textarea>
+        </div>
+
+        <button type="submit" class="clay-btn clay-btn-lg form-submit" id="contactFormSubmit">
+          ❄️ Send Enquiry
+        </button>
+        <p class="form-note">🔒 Your details are safe. We never share your information with third parties.</p>
+      </form>
+
+      <div class="form-success" id="formSuccess" role="alert" aria-live="polite">
+        <div style="font-size:52px;margin-bottom:12px;">✅</div>
+        <h3>Enquiry Sent!</h3>
+        <p>Thank you! Our team will get back to you within 1–2 business hours. You can also call or WhatsApp us directly for faster response.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- OFFICE LOCATIONS -->
+<section class="contact-locations" aria-labelledby="contact-loc-heading">
+  <div class="container" style="max-width:1160px;">
+    <div class="text-center" style="margin-bottom:40px;">
+      <span class="section-label">Our Offices</span>
+      <h2 class="section-heading" id="contact-loc-heading">Visit Us</h2>
+    </div>
+    <div class="contact-loc-grid">
+      <div class="contact-loc-card reveal">
+        <span class="loc-icon-big" aria-hidden="true">🏢</span>
+        <h3>Thoothukudi HQ</h3>
+        <p>2H/740, Annai Theresa Nagar,<br>Kandan Colony, Teachers Colony,<br>Thoothukudi, Tamil Nadu — 628008</p>
+        <div class="hours-tag">🕐 Mon–Sat, 9AM–6PM</div><br>
+        <a href="https://maps.google.com/?q=Thoothukudi+Tamil+Nadu+628008" target="_blank" rel="noopener" class="clay-btn" id="map-tuty-btn">📍 Get Directions</a>
+      </div>
+      <div class="contact-loc-card reveal reveal-delay-1">
+        <span class="loc-icon-big" aria-hidden="true">🏢</span>
+        <h3>Tiruchirappalli Office</h3>
+        <p>No. 28, 6th Sector, Morais City,<br>Sembattu, Tiruchirappalli,<br>Tamil Nadu — 620007</p>
+        <div class="hours-tag">🕐 Mon–Sat, 9AM–6PM</div><br>
+        <a href="https://maps.google.com/?q=Sembattu+Tiruchirappalli" target="_blank" rel="noopener" class="clay-btn" id="map-trichy-btn">📍 Get Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:0 24px 96px;" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <span class="section-label">FAQs</span>
+      <h2 class="section-heading" id="faq-heading">Frequently Asked Questions</h2>
+    </div>
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:16px;" role="list">
+
+      <div class="clay-card reveal" role="listitem">
+        <h3 style="font-family:var(--font-display);font-size:17px;font-weight:800;margin-bottom:8px;">Do you offer a free consultation or site visit?</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;">Yes — we provide absolutely free initial consultations and site surveys. Our engineers will assess your space, calculate cooling loads, and recommend the right HVAC system with no obligation.</p>
+      </div>
+
+      <div class="clay-card reveal reveal-delay-1" role="listitem">
+        <h3 style="font-family:var(--font-display);font-size:17px;font-weight:800;margin-bottom:8px;">How long does a typical HVAC installation take?</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;">Timeline depends on the scope. Split AC projects typically take 1–3 days. VRF and ductable projects for medium-sized offices take 2–4 weeks. Large chiller plants may take 4–8 weeks including civil coordination.</p>
+      </div>
+
+      <div class="clay-card reveal reveal-delay-2" role="listitem">
+        <h3 style="font-family:var(--font-display);font-size:17px;font-weight:800;margin-bottom:8px;">Which brands do you work with?</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;">We work with all major HVAC brands — Blue Star, Daikin, Mitsubishi, Voltas, LG, Samsung, Hitachi, and more. We recommend the best brand-system combination based on your budget, capacity, and application requirements.</p>
+      </div>
+
+      <div class="clay-card reveal" role="listitem">
+        <h3 style="font-family:var(--font-display);font-size:17px;font-weight:800;margin-bottom:8px;">Do you offer Annual Maintenance Contracts (AMC)?</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;">Yes — we offer comprehensive AMC plans for all types of HVAC systems including chillers, VRF, ductable and split AC. Our AMC packages include quarterly service visits, priority response, and full documentation.</p>
+      </div>
+
+      <div class="clay-card reveal reveal-delay-1" role="listitem">
+        <h3 style="font-family:var(--font-display);font-size:17px;font-weight:800;margin-bottom:8px;">Do you serve locations outside Thoothukudi and Tiruchirappalli?</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;">Yes — we serve clients across Tamil Nadu. While our primary offices are in Thoothukudi and Tiruchirappalli, our project teams travel statewide for installations. Contact us to discuss your specific location.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo-mark" style="width:48px;height:48px;font-size:18px;border-radius:14px;margin-bottom:14px;" aria-hidden="true">AK</div>
+        <div class="footer-brand-name">AK Comfortzone</div>
+        <p class="footer-tagline">Your Comfort, Our Priority.<br>Professional &amp; Dynamic Turnkey HVAC Solutions across Tamil Nadu — since November 2014.</p>
+        <div class="footer-socials"><a href="#" class="social-btn" aria-label="Facebook">📘</a><a href="#" class="social-btn" aria-label="Instagram">📷</a><a href="#" class="social-btn" aria-label="LinkedIn">💼</a><a href="#" class="social-btn" aria-label="WhatsApp">💬</a></div>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="clients.html">Clients</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html#chillers">Chiller Systems</a></li><li><a href="services.html#vrf">VRF / VRV Systems</a></li><li><a href="services.html#ductable">Ductable AC</a></li><li><a href="services.html#split">Split AC</a></li><li><a href="services.html#retrofit">Retrofit &amp; Upgrades</a></li><li><a href="services.html#amc">AMC Maintenance</a></li></ul></div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-contact-item"><span class="contact-icon" aria-hidden="true">📍</span><p><strong>Thoothukudi</strong>2H/740, Annai Theresa Nagar, Kandan Colony, TN 628008</p></div>
+        <div class="footer-contact-item"><span class="contact-icon" aria-hidden="true">📍</span><p><strong>Tiruchirappalli</strong>No.28, 6th Sector, Morais City, Sembattu, TN 620007</p></div>
+        <div class="footer-contact-item"><span class="contact-icon" aria-hidden="true">🕐</span><p>Mon–Sat, 9AM–6PM IST</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 AK Comfortzone. All rights reserved. | akcomfortzone.in</p>
+      <p class="footer-love">Designed with <span>❄️</span> in Tamil Nadu</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+<script src="js/counter.js" defer></script>
+<script>
+  // Contact form submit handler (frontend-only demo)
+  document.addEventListener('DOMContentLoaded', () => {
+    const form    = document.getElementById('contactForm');
+    const success = document.getElementById('formSuccess');
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const required = form.querySelectorAll('[required]');
+        let valid = true;
+        required.forEach(field => {
+          if (!field.value.trim()) {
+            field.style.borderColor = '#ff7070';
+            valid = false;
+          } else {
+            field.style.borderColor = '';
+          }
+        });
+        if (!valid) return;
+
+        // Show success state
+        form.style.display = 'none';
+        success.classList.add('show');
+        document.getElementById('contactFormSubmit') && (document.getElementById('contactFormSubmit').disabled = true);
+      });
+
+      // Clear error highlight on input
+      form.querySelectorAll('input, select, textarea').forEach(field => {
+        field.addEventListener('input', () => { field.style.borderColor = ''; });
+      });
+    }
+  });
+</script>
+</body>
+</html>

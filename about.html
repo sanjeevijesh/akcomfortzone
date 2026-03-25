@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="About AK Comfortzone — Founded in 2014 by ex-Blue Star Ltd engineers. 500+ combined HVAC projects across Tamil Nadu. Meet our founders and story."/>
+  <meta name="robots" content="index, follow"/>
+  <title>About Us — AK Comfortzone | Founded by Blue Star Engineers</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png"/>
+  <link rel="stylesheet" href="css/clay.css"/>
+  <link rel="stylesheet" href="css/animations.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── About-page specific styles ── */
+    .about-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 24px 80px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(155deg, #dff0ff 0%, #e8fdf6 45%, #f0ebff 100%);
+    }
+    .about-hero-inner {
+      max-width: 1160px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+      position: relative; z-index: 2;
+    }
+    .about-hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem,4.5vw,3.8rem); font-weight: 900; color: var(--text-dark); line-height: 1.1; margin-bottom: 20px; }
+    .about-hero p  { font-size: 18px; color: var(--text-muted); line-height: 1.8; margin-bottom: 32px; max-width: 520px; }
+
+    .hero-shapes { position: relative; display: flex; align-items: center; justify-content: center; }
+    .hero-shape-main {
+      width: 260px; height: 260px; border-radius: 40px;
+      background: linear-gradient(145deg, #b8dfff, var(--clay-sky));
+      box-shadow: var(--clay-shadow-lg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 110px; animation: clayFloat 7s ease-in-out infinite;
+      position: relative; overflow: hidden;
+    }
+    .hero-shape-main::before {
+      content:''; position: absolute; top:0; left:0; width:100%; height:40%;
+      background: linear-gradient(to bottom,rgba(255,255,255,0.4),transparent);
+      border-radius: 40px 40px 0 0;
+    }
+    .blob-about-1 { position:absolute; top:-60px; right:-60px; width:350px; height:350px; border-radius:50%; background:radial-gradient(circle,rgba(168,216,255,0.45),transparent 70%); animation:blobPulse 8s ease-in-out infinite; pointer-events:none; }
+    .blob-about-2 { position:absolute; bottom:-80px; left:0; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle,rgba(181,234,215,0.4),transparent 70%); animation:blobPulse 10s ease-in-out infinite 2s; pointer-events:none; }
+
+    /* Founder cards */
+    .founders-section { padding: 96px 24px; background: var(--bg-section-alt); }
+    .founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 56px; }
+    .founder-card {
+      border-radius: 40px; padding: 44px 36px;
+      box-shadow: var(--clay-shadow-lg);
+      position: relative; overflow: hidden; transition: transform 0.3s ease;
+    }
+    .founder-card:hover { transform: translateY(-8px); }
+    .founder-card:nth-child(1) { background: linear-gradient(145deg, #c8e8ff, #a0d0f5); }
+    .founder-card:nth-child(2) { background: linear-gradient(145deg, #c4f0de, #9de8c4); }
+    .founder-card::before {
+      content:''; position:absolute; top:0; left:0; width:100%; height:35%;
+      background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent);
+      border-radius:40px 40px 0 0; pointer-events:none;
+    }
+    .founder-avatar {
+      width: 96px; height: 96px; border-radius: 28px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.7), rgba(255,255,255,0.4));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 52px; box-shadow: var(--clay-shadow-md);
+      margin-bottom: 24px; position: relative; overflow: hidden;
+    }
+    .founder-avatar::before {
+      content:''; position:absolute; top:0; left:0; width:100%; height:45%;
+      background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent);
+      border-radius:28px 28px 0 0;
+    }
+    .founder-role { font-size: 13px; font-weight: 700; color: var(--clay-deep); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .founder-card h3 { font-family: var(--font-display); font-size: 26px; font-weight: 900; margin-bottom: 8px; color: var(--text-dark); }
+    .founder-prev { font-size: 14px; color: rgba(26,43,60,0.7); margin-bottom: 6px; font-weight: 600; }
+    .founder-exp  { font-size: 15px; font-weight: 700; color: var(--clay-deep); margin-bottom: 20px; }
+    .founder-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .founder-chip {
+      padding: 5px 14px; border-radius: 999px; font-size: 12px; font-weight: 700;
+      background: rgba(255,255,255,0.55); color: var(--text-dark);
+      box-shadow: 3px 3px 8px rgba(0,80,160,0.12),-2px -2px 6px rgba(255,255,255,0.7);
+    }
+    .founder-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 18px; border-radius: 999px; font-size: 13px; font-weight: 700;
+      background: rgba(255,255,255,0.65); color: var(--clay-deep);
+      box-shadow: var(--clay-shadow-sm);
+    }
+
+    /* Timeline */
+    .timeline-section { padding: 96px 24px; }
+    .timeline { position: relative; max-width: 800px; margin: 56px auto 0; }
+    .timeline::before {
+      content:''; position:absolute; left:32px; top:0; bottom:0; width:3px;
+      background: linear-gradient(to bottom, var(--clay-sky), var(--clay-mint), var(--clay-lavender));
+      border-radius: 4px;
+    }
+    .timeline-item {
+      display: flex; gap: 32px; align-items: flex-start; margin-bottom: 40px; position: relative;
+    }
+    .timeline-dot {
+      width: 64px; height: 64px; border-radius: 20px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 900; font-size: 13px; color: var(--text-dark);
+      box-shadow: var(--clay-shadow-md); position: relative; overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+    .timeline-dot:hover { transform: scale(1.08); }
+    .timeline-dot::before { content:''; position:absolute; top:0; left:0; width:100%; height:45%; background:linear-gradient(to bottom,rgba(255,255,255,0.45),transparent); border-radius:20px 20px 0 0; }
+    .timeline-item:nth-child(1) .timeline-dot { background: linear-gradient(145deg, #c8e8ff, var(--clay-sky)); }
+    .timeline-item:nth-child(2) .timeline-dot { background: linear-gradient(145deg, #c4f0de, var(--clay-mint)); }
+    .timeline-item:nth-child(3) .timeline-dot { background: linear-gradient(145deg, #ffe8c0, var(--clay-sunshine)); }
+    .timeline-item:nth-child(4) .timeline-dot { background: linear-gradient(145deg, #ddd4ff, var(--clay-lavender)); }
+    .timeline-item:nth-child(5) .timeline-dot { background: linear-gradient(145deg, #ffd0d0, var(--clay-coral)); }
+    .timeline-item:nth-child(6) .timeline-dot { background: linear-gradient(145deg, #ffe8d0, var(--clay-peach)); }
+    .timeline-content {
+      flex: 1;
+      background: linear-gradient(145deg, #fff, #e8f4ff);
+      border-radius: 24px; padding: 24px 28px;
+      box-shadow: var(--clay-shadow-sm);
+      transition: transform 0.2s ease;
+    }
+    .timeline-content:hover { transform: translateX(6px); }
+    .timeline-year { font-size: 12px; font-weight: 700; color: var(--clay-storm); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+    .timeline-content h3 { font-family: var(--font-display); font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+    .timeline-content p  { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    /* Team Values */
+    .values-section { padding: 96px 24px; background: var(--bg-section-alt); }
+    .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
+    .value-card {
+      border-radius: 32px; padding: 36px 28px; text-align: center;
+      box-shadow: var(--clay-shadow-md); transition: transform 0.25s ease;
+      position: relative; overflow: hidden;
+    }
+    .value-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:38%; background:linear-gradient(to bottom,rgba(255,255,255,0.45),transparent); border-radius:32px 32px 0 0; pointer-events:none; }
+    .value-card:hover { transform: translateY(-8px) scale(1.02); }
+    .value-card:nth-child(1) { background: linear-gradient(145deg, #c8e8ff, var(--clay-sky)); }
+    .value-card:nth-child(2) { background: linear-gradient(145deg, #c4f0de, var(--clay-mint)); }
+    .value-card:nth-child(3) { background: linear-gradient(145deg, #ddd4ff, var(--clay-lavender)); }
+    .value-icon { font-size: 52px; margin-bottom: 16px; display:block; filter: drop-shadow(3px 4px 6px rgba(0,0,0,0.12)); }
+    .value-card h3 { font-family: var(--font-display); font-size: 20px; font-weight: 800; margin-bottom: 10px; }
+    .value-card p  { font-size: 14px; color: rgba(26,43,60,0.8); line-height: 1.7; }
+
+    @media (max-width: 1024px) {
+      .about-hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .founders-grid    { grid-template-columns: 1fr; }
+      .values-grid      { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 767px) {
+      .about-hero { padding: 120px 20px 60px; }
+      .about-hero h1 { font-size: 2.2rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      .timeline::before { left: 24px; }
+      .timeline-dot { width: 48px; height: 48px; font-size: 11px; border-radius: 14px; }
+      .founders-section, .timeline-section, .values-section { padding: 64px 16px; }
+    }
+  </style>
+</head>
+<body style="overflow-x:hidden;">
+
+<div id="drawerOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);z-index:998;"></div>
+<div id="mobileDrawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="drawer-handle"></div>
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="about.html">👥 About Us</a>
+    <a href="services.html">⚙️ Services</a>
+    <a href="clients.html">🏢 Clients</a>
+    <a href="portfolio.html">📁 Portfolio</a>
+    <a href="contact.html">📞 Contact</a>
+  </nav>
+  <a href="contact.html" class="clay-btn clay-btn-lg" style="margin-top:20px;width:100%;justify-content:center;">❄️ Get Free Consultation</a>
+</div>
+
+<header role="banner">
+  <nav id="navbar" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="AK Comfortzone Home">
+      <div class="nav-logo-mark" aria-hidden="true">AK</div>
+      <div class="nav-logo-text">
+        <strong>AK Comfortzone</strong>
+        <span>HVAC Turnkey Specialists</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="clients.html">Clients</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="contact.html" class="clay-btn" id="nav-quote-btn">Get Quote ✨</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="about-hero" aria-labelledby="about-hero-heading">
+  <div class="blob-about-1" aria-hidden="true"></div>
+  <div class="blob-about-2" aria-hidden="true"></div>
+  <div class="about-hero-inner">
+    <div>
+      <span class="section-label" style="margin-bottom:20px;">Our Story</span>
+      <h1 id="about-hero-heading">Built by Engineers.<br><span style="background:linear-gradient(135deg,var(--clay-storm),var(--clay-deep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Trusted by Industry.</span></h1>
+      <p>Founded in November 2014 by two passionate HVAC engineers from Blue Star Ltd — AK Comfortzone brings over a decade of enterprise-grade expertise to every project in Tamil Nadu.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="contact.html" class="clay-btn clay-btn-lg" id="about-hero-cta">❄️ Get Free Consultation</a>
+        <a href="services.html" class="clay-btn clay-btn-outline clay-btn-lg" id="about-hero-services">Our Services →</a>
+      </div>
+    </div>
+    <div class="hero-shapes">
+      <div class="hero-shape-main" aria-hidden="true">🏗️</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="founders-section" aria-labelledby="founders-heading">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label">Meet the Team</span>
+      <h2 class="section-heading" id="founders-heading">The Engineers Behind AK Comfortzone</h2>
+      <p class="section-sub">Two engineers with a combined 500+ HVAC projects who left industry giants to build something of their own.</p>
+    </div>
+    <div class="founders-grid">
+
+      <!-- Founder 1 -->
+      <div class="founder-card reveal" aria-label="Co-Founder 1 profile">
+        <div class="founder-avatar" aria-hidden="true">👷</div>
+        <div class="founder-role">Co-Founder &amp; HVAC Project Lead</div>
+        <h3>HVAC Project Engineer</h3>
+        <p class="founder-prev">🏢 Ex-L&amp;T Cochin &rarr; Blue Star Ltd (AP &amp; Tamil Nadu)</p>
+        <p class="founder-exp">7+ Years Experience &nbsp;|&nbsp; 350+ Projects Delivered</p>
+        <div class="founder-chips">
+          <span class="founder-chip">VRF Systems</span>
+          <span class="founder-chip">Chillers</span>
+          <span class="founder-chip">Packaged AC</span>
+          <span class="founder-chip">Ducted Systems</span>
+          <span class="founder-chip">Precision Control AC</span>
+          <span class="founder-chip">Project Marketing</span>
+        </div>
+        <div class="founder-badge">⭐ Blue Star Ltd Certified</div>
+      </div>
+
+      <!-- Founder 2 -->
+      <div class="founder-card reveal reveal-delay-1" aria-label="Co-Founder 2 profile">
+        <div class="founder-avatar" aria-hidden="true">🔧</div>
+        <div class="founder-role">Co-Founder &amp; Service Operations Head</div>
+        <h3>HVAC Service Engineer</h3>
+        <p class="founder-prev">🏢 Ex-Blue Star Ltd</p>
+        <p class="founder-exp">6+ Years Experience &nbsp;|&nbsp; 150+ Projects Delivered</p>
+        <div class="founder-chips">
+          <span class="founder-chip">Commissioning</span>
+          <span class="founder-chip">Service &amp; AMC</span>
+          <span class="founder-chip">Packaged AC</span>
+          <span class="founder-chip">VRF Systems</span>
+          <span class="founder-chip">Process Chillers</span>
+          <span class="founder-chip">Operations</span>
+        </div>
+        <div class="founder-badge">⭐ Blue Star Ltd Certified</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section" aria-labelledby="timeline-heading">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label">Our Journey</span>
+      <h2 class="section-heading" id="timeline-heading">10 Years of Cooling Tamil Nadu</h2>
+      <p class="section-sub">From a bold idea in 2014 to one of Tamil Nadu's most trusted HVAC turnkey companies.</p>
+    </div>
+    <div class="timeline" role="list" aria-label="Company timeline">
+
+      <div class="timeline-item reveal" role="listitem">
+        <div class="timeline-dot" aria-label="Year 2014">2014</div>
+        <div class="timeline-content">
+          <div class="timeline-year">November 2014 — Founded</div>
+          <h3>AK Comfortzone Established</h3>
+          <p>Two passionate engineers from Blue Star Ltd took the leap and founded AK Comfortzone in Thoothukudi, Tamil Nadu — with a shared vision of bringing enterprise-level HVAC expertise to businesses of all sizes.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-1" role="listitem">
+        <div class="timeline-dot" aria-label="Year 2015">2015</div>
+        <div class="timeline-content">
+          <div class="timeline-year">2015 — First Milestone</div>
+          <h3>50 Commercial Projects Completed</h3>
+          <p>Within the first year, AK Comfortzone delivered over 50 successful commercial HVAC installations across Thoothukudi — spanning hotels, offices, and small industrial units.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-2" role="listitem">
+        <div class="timeline-dot" aria-label="Year 2017">2017</div>
+        <div class="timeline-content">
+          <div class="timeline-year">2017 — Expansion</div>
+          <h3>Tiruchirappalli Office Opened</h3>
+          <p>Growing demand from the central Tamil Nadu market led us to open our second office in Tiruchirappalli — extending our turnkey HVAC services to a wider geography.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal" role="listitem">
+        <div class="timeline-dot" aria-label="Year 2019">2019</div>
+        <div class="timeline-content">
+          <div class="timeline-year">2019 — Major Milestone</div>
+          <h3>500+ Combined Projects Delivered</h3>
+          <p>A proud milestone — our two founders together crossed 500 successfully completed HVAC projects, serving clients across 12+ industry verticals from pharma to data centers.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-1" role="listitem">
+        <div class="timeline-dot" aria-label="Year 2022">2022</div>
+        <div class="timeline-content">
+          <div class="timeline-year">2022 — Growth</div>
+          <h3>Serving 12+ Industry Verticals</h3>
+          <p>AK Comfortzone expanded its service portfolio to serve over 12 distinct industry sectors across Tamil Nadu, from hospitals and pharma to IT companies, malls, and industrial plants.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal reveal-delay-2" role="listitem">
+        <div class="timeline-dot" aria-label="Year 2024">2024</div>
+        <div class="timeline-content">
+          <div class="timeline-year">2024 — 10 Year Anniversary 🎉</div>
+          <h3>A Decade of Cooling Tamil Nadu</h3>
+          <p>Celebrating 10 years of trust, expertise, and commitment to quality — AK Comfortzone continues to be Tamil Nadu's go-to HVAC turnkey partner, with a 4.7★ rating and a growing team of certified professionals.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEAM VALUES -->
+<section class="values-section" aria-labelledby="values-heading">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label">What Drives Us</span>
+      <h2 class="section-heading" id="values-heading">Our Team &amp; Culture</h2>
+      <p class="section-sub">Our certified staff hold strong industry qualifications. Our administrative team ensures prompt, efficient project processing and enquiry response.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <span class="value-icon" aria-hidden="true">🎓</span>
+        <h3>Certified Staff</h3>
+        <p>All our field technicians and engineers hold certified qualifications with hands-on training from Blue Star Ltd — ensuring every installation meets industry standards.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-1">
+        <span class="value-icon" aria-hidden="true">⚡</span>
+        <h3>Prompt Response</h3>
+        <p>Our administrative team ensures rapid enquiry response and efficient project processing — from first consultation to final commissioning handover.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <span class="value-icon" aria-hidden="true">🔩</span>
+        <h3>Turnkey Expertise</h3>
+        <p>We manage every aspect of your HVAC project in-house — consultancy, engineering design, procurement, installation, commissioning, and AMC maintenance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-banner" aria-label="Contact AK Comfortzone">
+  <div class="blob-1" aria-hidden="true"></div>
+  <div class="blob-2" aria-hidden="true"></div>
+  <div class="inner">
+    <div class="clay-badge" style="background:linear-gradient(135deg,rgba(168,216,255,0.15),rgba(91,155,213,0.15));color:var(--clay-sky);border:1px solid rgba(91,155,213,0.3);">
+      🤝 Work With Us
+    </div>
+    <h2>Ready to Work With Our Team?</h2>
+    <p>Connect with our engineers today for a free site survey and HVAC consultation — no obligation, expert advice.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="clay-btn clay-btn-lg" id="about-cta-contact">📞 Contact Us Today</a>
+      <a href="services.html" class="clay-btn clay-btn-lg clay-btn-dark-outline" id="about-cta-services">Explore Services →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo-mark" style="width:48px;height:48px;font-size:18px;border-radius:14px;margin-bottom:14px;" aria-hidden="true">AK</div>
+        <div class="footer-brand-name">AK Comfortzone</div>
+        <p class="footer-tagline">Your Comfort, Our Priority.<br>Professional &amp; Dynamic Turnkey HVAC Solutions across Tamil Nadu — since November 2014.</p>
+        <div class="footer-socials" aria-label="Social media">
+          <a href="#" class="social-btn" aria-label="Facebook">📘</a>
+          <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+          <a href="#" class="social-btn" aria-label="LinkedIn">💼</a>
+          <a href="#" class="social-btn" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="clients.html">Clients</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#chillers">Chiller Systems</a></li>
+          <li><a href="services.html#vrf">VRF / VRV Systems</a></li>
+          <li><a href="services.html#ductable">Ductable AC</a></li>
+          <li><a href="services.html#split">Split AC</a></li>
+          <li><a href="services.html#retrofit">Retrofit &amp; Upgrades</a></li>
+          <li><a href="services.html#amc">AMC Maintenance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-contact-item">
+          <span class="contact-icon" aria-hidden="true">📍</span>
+          <p><strong>Thoothukudi</strong>2H/740, Annai Theresa Nagar, Kandan Colony, TN 628008</p>
+        </div>
+        <div class="footer-contact-item">
+          <span class="contact-icon" aria-hidden="true">📍</span>
+          <p><strong>Tiruchirappalli</strong>No.28, 6th Sector, Morais City, Sembattu, TN 620007</p>
+        </div>
+        <div class="footer-contact-item">
+          <span class="contact-icon" aria-hidden="true">🕐</span>
+          <p>Mon–Sat, 9AM–6PM IST</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 AK Comfortzone. All rights reserved. | akcomfortzone.in</p>
+      <p class="footer-love">Designed with <span>❄️</span> in Tamil Nadu</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+<script src="js/counter.js" defer></script>
+</body>
+</html>
