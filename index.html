@@ -189,27 +189,82 @@
       <div class="hero-visual">
         <div class="hero-circle-outer">
           <div class="hero-grid-bg">
-            <svg width="100%" height="100%" viewBox="0 0 260 260">
+            <svg width="100%" height="100%" viewBox="0 0 260 260" aria-hidden="true">
               <defs>
                 <pattern id="innerGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#C9A96E" stroke-width="0.5"/>
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#C9A96E" stroke-width="0.3"/>
+                </pattern>
+                <pattern id="microGrid" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+                  <path d="M 4 0 L 0 0 0 4" fill="none" stroke="#C9A96E" stroke-width="0.1"/>
                 </pattern>
               </defs>
+              <!-- Grids -->
+              <rect width="260" height="260" fill="url(#microGrid)" opacity="0.3"/>
               <rect width="260" height="260" fill="url(#innerGrid)"/>
+              
+              <!-- Orbital Rings -->
+              <circle cx="130" cy="130" r="100" fill="none" stroke="#C9A96E" stroke-width="0.5" stroke-dasharray="4 6" opacity="0.8"/>
+              <circle cx="130" cy="130" r="120" fill="none" stroke="#C9A96E" stroke-width="0.3" opacity="0.6"/>
+              <circle cx="130" cy="130" r="70" fill="none" stroke="#C9A96E" stroke-width="0.5" stroke-dasharray="1 4" opacity="0.5"/>
+              
+              <!-- Outer Crosshairs -->
+              <path d="M5 130 H25 M235 130 H255 M130 5 V25 M130 235 V255" stroke="#C9A96E" stroke-width="1.5" opacity="0.9"/>
+              
+              <!-- Diagnostic Nodes & Text -->
+              <circle cx="50" cy="50" r="2" fill="#C9A96E"/>
+              <circle cx="210" cy="50" r="2" fill="#C9A96E"/>
+              <circle cx="50" cy="210" r="2" fill="#C9A96E"/>
+              <circle cx="210" cy="210" r="2" fill="#C9A96E"/>
+              
+              <text x="216" y="46" fill="#C9A96E" font-size="7" font-family="monospace" font-weight="600" opacity="0.8">LOAD: 100%</text>
+              <text x="20" y="222" fill="#C9A96E" font-size="7" font-family="monospace" font-weight="600" opacity="0.8">SYS-RDY</text>
+              <text x="85" y="20" fill="#C9A96E" font-size="7" font-family="monospace" letter-spacing="2" opacity="0.5">PRECISION CLIMATE</text>
             </svg>
           </div>
-          <div class="hero-circle-inner">
-            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Stylized AC schematic -->
-              <rect x="8" y="20" width="64" height="40" rx="4" stroke="#C9A96E" stroke-width="1" fill="none"/>
-              <line x1="8" y1="32" x2="72" y2="32" stroke="#C9A96E" stroke-width="0.75" opacity="0.6"/>
-              <line x1="8" y1="40" x2="72" y2="40" stroke="#C9A96E" stroke-width="0.75" opacity="0.4"/>
-              <line x1="8" y1="48" x2="72" y2="48" stroke="#C9A96E" stroke-width="0.75" opacity="0.3"/>
-              <circle cx="60" cy="36" r="5" stroke="#C9A96E" stroke-width="0.75" fill="none"/>
-              <circle cx="60" cy="36" r="2" fill="#C9A96E" opacity="0.5"/>
-              <!-- Airflow lines -->
-              <path d="M28 14 Q40 8 52 14" stroke="#C9A96E" stroke-width="0.75" fill="none" stroke-linecap="round" opacity="0.7"/>
-              <path d="M20 10 Q40 2 60 10" stroke="#C9A96E" stroke-width="0.5" fill="none" stroke-linecap="round" opacity="0.4"/>
+          <div class="hero-circle-inner" style="box-shadow: 0 10px 40px rgba(10,22,40,0.8); background: rgba(7,14,26,0.7); backdrop-filter: blur(8px);">
+            <!-- High detail Industrial VRF Model SVG -->
+            <svg width="100" height="100" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Connectors -->
+              <path d="M100 70 H115 V45 H120 M100 80 H110 V95" stroke="#C9A96E" stroke-width="1" fill="none"/>
+              
+              <!-- Main Chassis -->
+              <rect x="25" y="15" width="70" height="90" rx="3" stroke="#C9A96E" stroke-width="1.5" fill="rgba(10,22,40,1)"/>
+              
+              <!-- Heat Exchange Fins -->
+              <g opacity="0.5" stroke="#C9A96E" stroke-width="0.5">
+                <line x1="30" y1="20" x2="90" y2="20"/>
+                <line x1="30" y1="23" x2="90" y2="23"/>
+                <line x1="30" y1="26" x2="90" y2="26"/>
+                <line x1="30" y1="29" x2="90" y2="29"/>
+                <line x1="30" y1="32" x2="90" y2="32"/>
+                <line x1="30" y1="35" x2="90" y2="35"/>
+              </g>
+              
+              <line x1="25" y1="38" x2="95" y2="38" stroke="#C9A96E" stroke-width="1.5"/>
+              
+              <!-- Upper Fan Unit -->
+              <rect x="35" y="42" width="50" height="26" rx="2" stroke="#C9A96E" stroke-width="1" fill="none"/>
+              <circle cx="60" cy="55" r="10" stroke="#C9A96E" stroke-width="1" stroke-dasharray="2 2"/>
+              <circle cx="60" cy="55" r="2" fill="#C9A96E"/>
+              <path d="M60 46 V64 M51 55 H69 M54 49 L66 61 M54 61 L66 49" stroke="#C9A96E" stroke-width="0.75" opacity="0.9"/>
+              
+              <!-- Lower Fan Unit -->
+              <rect x="35" y="74" width="50" height="26" rx="2" stroke="#C9A96E" stroke-width="1" fill="none"/>
+              <circle cx="60" cy="87" r="10" stroke="#C9A96E" stroke-width="1" stroke-dasharray="2 2"/>
+              <circle cx="60" cy="87" r="2" fill="#C9A96E"/>
+              <path d="M60 78 V96 M51 87 H69 M54 81 L66 93 M54 93 L66 81" stroke="#C9A96E" stroke-width="0.75" opacity="0.9"/>
+              
+              <!-- Base Mounts -->
+              <path d="M35 105 L30 112 H40 Z" fill="#C9A96E"/>
+              <path d="M85 105 L80 112 H90 Z" fill="#C9A96E"/>
+              
+              <!-- UI Status Overlays -->
+              <rect x="-5" y="10" width="36" height="15" rx="2" fill="rgba(201,169,110,0.1)" stroke="#C9A96E" stroke-width="0.5"/>
+              <circle cx="3" cy="17.5" r="1.5" fill="#4ade80"/>
+              <text x="8" y="20" fill="#C9A96E" font-size="6" font-family="monospace">ΔT=14K</text>
+              
+              <rect x="0" y="85" width="20" height="10" rx="2" fill="rgba(201,169,110,0.1)" stroke="#C9A96E" stroke-width="0.5"/>
+              <text x="3" y="92" fill="#C9A96E" font-size="5" font-family="monospace">INV_AC</text>
             </svg>
           </div>
         </div>
