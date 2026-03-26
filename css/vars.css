@@ -1,0 +1,52 @@
+/* =====================================================
+   AK COMFORTZONE — VARS.CSS
+   Corporate Precision Design System Variables
+   Theme: Dark Navy + Brushed Gold
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  /* ── Core Navy Palette ─────────────────────────── */
+  --navy-deepest:  #070E1A;
+  --navy-deep:     #0A1628;
+  --navy-mid:      #0D1E38;
+  --navy-card:     #112244;
+  --navy-border:   #1C2F4A;
+  --navy-muted:    #263D5C;
+
+  /* ── Gold Accent ───────────────────────────────── */
+  --gold-primary:  #C9A96E;
+  --gold-dark:     #B8935A;
+  --gold-light:    #E8D5A8;
+  --gold-subtle:   rgba(201,169,110,0.12);
+
+  /* ── Neutral Light ─────────────────────────────── */
+  --warm-white:    #F8F5F0;
+  --warm-card:     #FFFFFF;
+  --warm-border:   #E5E0D8;
+  --warm-muted:    #8A8278;
+
+  /* ── Text ──────────────────────────────────────── */
+  --text-white:    #FFFFFF;
+  --text-light:    rgba(255,255,255,0.85);
+  --text-muted-d:  rgba(255,255,255,0.45);
+  --text-dark:     #1A1410;
+  --text-muted-l:  #6B6560;
+
+  /* ── Typography ────────────────────────────────── */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  /* ── Spacing & Radius ──────────────────────────── */
+  --section-pad:  100px 24px;
+  --card-radius:  6px;
+  --btn-radius:   4px;
+
+  /* ── Legacy aliases (keep JS working) ─────────── */
+  --text-dark-legacy: #1A1410;
+  --text-muted:   #6B6560;
+  --clay-storm:   #C9A96E;
+  --clay-sky:     #C9A96E;
+  --clay-deep:    #0A1628;
+}

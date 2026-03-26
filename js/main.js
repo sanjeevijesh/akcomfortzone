@@ -38,33 +38,96 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ── Mobile drawer toggle ───────────────────────── */
-  const hamburger    = document.getElementById('hamburger');
-  const mobileDrawer = document.getElementById('mobileDrawer');
-  const overlay      = document.getElementById('drawerOverlay');
+  const hamburger     = document.getElementById('hamburger');
+  const mobileDrawer  = document.getElementById('mobileDrawer');
+  const drawerOverlay = document.getElementById('drawerOverlay');
+
+  /* Force-inject base drawer styles via JS so no CSS conflict can block them */
+  if (mobileDrawer) {
+    Object.assign(mobileDrawer.style, {
+      position:       'fixed',
+      left:           '12px',
+      right:          '12px',
+      bottom:         '-110%',
+      top:            'auto',
+      height:         'auto',
+      maxHeight:      '85vh',
+      overflowY:      'auto',
+      display:        'flex',
+      flexDirection:  'column',
+      alignItems:     'flex-start',
+      background:     'linear-gradient(145deg, #0D1E38, #0A1628)',
+      borderRadius:   '24px 24px 0 0',
+      padding:        '20px 24px 48px',
+      zIndex:         '1001',
+      borderTop:      '1px solid rgba(201,169,110,0.2)',
+      boxShadow:      '0 -8px 40px rgba(0,0,0,0.5)',
+      transition:     'bottom 0.4s cubic-bezier(0.34, 1.4, 0.64, 1)',
+      opacity:        '1',
+      pointerEvents:  'none',
+      boxSizing:      'border-box',
+      inset:          'auto',          /* reset any CSS inset:0 */
+    });
+  }
+
+  let drawerOpen = false;
 
   function openDrawer() {
-    mobileDrawer?.classList.add('open');
-    hamburger?.classList.add('open');
-    if (overlay) overlay.style.display = 'block';
+    if (!mobileDrawer) return;
+    drawerOpen = true;
+    mobileDrawer.style.bottom       = '0';
+    mobileDrawer.style.pointerEvents = 'auto';
+    if (drawerOverlay) {
+      drawerOverlay.style.display = 'block';
+      drawerOverlay.style.opacity = '1';
+    }
     document.body.style.overflow = 'hidden';
-    hamburger?.setAttribute('aria-expanded', 'true');
+    if (hamburger) {
+      hamburger.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+    }
   }
+
   function closeDrawer() {
-    mobileDrawer?.classList.remove('open');
-    hamburger?.classList.remove('open');
-    if (overlay) overlay.style.display = 'none';
+    if (!mobileDrawer) return;
+    drawerOpen = false;
+    mobileDrawer.style.bottom       = '-110%';
+    mobileDrawer.style.pointerEvents = 'none';
+    if (drawerOverlay) {
+      drawerOverlay.style.display = 'none';
+    }
     document.body.style.overflow = '';
-    hamburger?.setAttribute('aria-expanded', 'false');
+    if (hamburger) {
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
   }
 
-  hamburger?.addEventListener('click', () => {
-    mobileDrawer?.classList.contains('open') ? closeDrawer() : openDrawer();
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.hamburger');
+    if (btn) {
+      e.stopPropagation();
+      e.preventDefault();
+      drawerOpen ? closeDrawer() : openDrawer();
+    }
   });
-  overlay?.addEventListener('click', closeDrawer);
 
-  // Close drawer on link click
-  document.querySelectorAll('.mobile-drawer nav a').forEach(a => {
-    a.addEventListener('click', closeDrawer);
+  if (drawerOverlay) {
+    drawerOverlay.addEventListener('click', closeDrawer);
+  }
+
+  // Close drawer when any nav link is clicked
+  if (mobileDrawer) {
+    mobileDrawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        setTimeout(closeDrawer, 150);
+      });
+    });
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeDrawer();
   });
 
   /* ── Smooth scroll for anchor links ─────────────── */
